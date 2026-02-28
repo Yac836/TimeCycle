@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import Observation
 
 /// 历史记录服务 - 负责记录和查询循环执行历史
 /// 每次启动循环会创建一个 CycleSession，每个段的执行会创建 SegmentRecord

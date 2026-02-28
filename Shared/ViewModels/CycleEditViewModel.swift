@@ -1,5 +1,7 @@
 import Foundation
+import SwiftUI
 import SwiftData
+import Observation
 
 /// 循环编辑视图模型 - 处理新建和编辑循环的逻辑
 /// 管理循环的名称、图标、颜色、段列表等编辑状态

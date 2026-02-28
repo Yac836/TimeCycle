@@ -1,5 +1,6 @@
 import Foundation
 import SwiftData
+import Observation
 
 /// 历史统计视图模型 - 提供历史数据的查询和展示
 @Observable
