@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 /// 循环详情视图 - 展示循环配置并提供启动入口
 struct CycleDetailView: View {

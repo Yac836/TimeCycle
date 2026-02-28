@@ -1,5 +1,5 @@
 import Foundation
-import Combine
+import Observation
 
 /// 计时器状态枚举
 enum TimerState: String, Codable, Equatable {

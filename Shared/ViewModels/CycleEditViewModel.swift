@@ -53,7 +53,7 @@ final class CycleEditViewModel {
         self.segments = [
             EditableSegment(
                 id: UUID(), name: "坐", duration: 2700,
-                colorHex: "#4A90D9", icon: "figure.seated"
+                colorHex: "#4A90D9", icon: "chair.fill"
             ),
             EditableSegment(
                 id: UUID(), name: "站", duration: 900,

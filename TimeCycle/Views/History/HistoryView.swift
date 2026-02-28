@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 /// 历史统计视图 - 按日期查看循环执行记录
 struct HistoryView: View {

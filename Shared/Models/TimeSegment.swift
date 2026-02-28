@@ -23,7 +23,7 @@ final class TimeSegment {
         name: String,
         duration: TimeInterval,
         colorHex: String = "#34C759",
-        icon: String = "figure.seated",
+        icon: String = "chair.fill",
         sortOrder: Int = 0
     ) {
         self.id = UUID()

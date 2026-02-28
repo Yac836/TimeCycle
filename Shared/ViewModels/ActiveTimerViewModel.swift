@@ -1,4 +1,5 @@
 import Foundation
+import Observation
 
 /// 计时器视图模型 - 连接 TimerService 和 UI
 /// 提供 UI 需要的所有计时状态和操作方法

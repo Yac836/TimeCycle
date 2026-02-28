@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 /// 计时器运行视图 - 全屏展示当前计时状态
 struct ActiveTimerView: View {
