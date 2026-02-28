@@ -28,9 +28,15 @@ struct SettingsView: View {
             Toggle("段切换提醒", isOn: $enableNotifications)
             if enableNotifications {
                 Button("测试通知") {
-                    Task {
-                        let svc = NotificationService()
-                        _ = await svc.requestPermission()
+                    let svc = NotificationService()
+                    svc.scheduleNotification(
+                        title: "TimeCycle 测试",
+                        body: "通知功能正常工作！",
+                        delay: 1
+                    )
+                    // 同时测试震动
+                    if enableHaptics {
+                        HapticService().segmentComplete()
                     }
                 }
             }
