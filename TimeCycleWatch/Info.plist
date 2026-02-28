@@ -8,5 +8,7 @@
     <string>TimeCycle</string>
     <key>WKApplication</key>
     <true/>
+    <key>WKCompanionAppBundleIdentifier</key>
+    <string>com.timecycle.app</string>
 </dict>
 </plist>

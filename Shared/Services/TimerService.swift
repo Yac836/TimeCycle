@@ -46,6 +46,17 @@ final class TimerService {
     /// 暂停时已经过的时间（恢复时需要扣除）
     private var pausedElapsed: TimeInterval = 0
 
+    // MARK: - 用户设置（从 UserDefaults 读取）
+
+    /// 是否启用通知提醒
+    private var enableNotifications: Bool {
+        UserDefaults.standard.object(forKey: "enableNotifications") as? Bool ?? true
+    }
+    /// 是否启用震动反馈
+    private var enableHaptics: Bool {
+        UserDefaults.standard.object(forKey: "enableHaptics") as? Bool ?? true
+    }
+
     // MARK: - 依赖服务
 
     private let notificationService: NotificationService
@@ -181,8 +192,10 @@ final class TimerService {
         // 记录历史
         historyService.recordSegmentCompletion(actualDuration: segments[currentSegmentIndex].duration)
 
-        // 震动提醒用户
-        hapticService.segmentComplete()
+        // 震动提醒用户（尊重设置开关）
+        if enableHaptics {
+            hapticService.segmentComplete()
+        }
 
         let isLastSegment = currentSegmentIndex >= segments.count - 1
 
@@ -190,13 +203,19 @@ final class TimerService {
             // 所有段都完成了，处理循环结束
             onCycleComplete()
         } else if cycle.autoNextSegment {
-            // 自动模式：直接进入下一段
+            // 自动模式：发通知提醒用户，然后直接进入下一段
+            let nextSegment = segments[currentSegmentIndex + 1]
+            if enableNotifications {
+                notificationService.sendSegmentEndNotification(nextSegment: nextSegment)
+            }
             advanceToSegment(currentSegmentIndex + 1)
         } else {
             // 手动模式：等待用户确认
             timerState = .waitingForManualTransition
             let nextSegment = segments[currentSegmentIndex + 1]
-            notificationService.sendSegmentEndNotification(nextSegment: nextSegment)
+            if enableNotifications {
+                notificationService.sendSegmentEndNotification(nextSegment: nextSegment)
+            }
         }
     }
 

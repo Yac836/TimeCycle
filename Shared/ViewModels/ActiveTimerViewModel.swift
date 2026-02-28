@@ -113,4 +113,16 @@ final class ActiveTimerViewModel {
             TimerCommand(action: .confirmTransition, cycleId: nil)
         )
     }
+
+    // MARK: - 后台生命周期
+
+    /// App 进入后台时调用
+    func appDidEnterBackground() {
+        timerService.appDidEnterBackground()
+    }
+
+    /// App 回到前台时调用
+    func appWillEnterForeground() {
+        timerService.appWillEnterForeground()
+    }
 }

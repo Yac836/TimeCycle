@@ -35,8 +35,8 @@ targets:
         SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD: true
     entitlements:
       path: TimeCycle/TimeCycle.entitlements
-    dependencies:
-      - target: TimeCycleWatch Watch App
+    # dependencies:
+    #   - target: TimeCycleWatch Watch App
 
   # ==================== watchOS App ====================
   TimeCycleWatch Watch App:

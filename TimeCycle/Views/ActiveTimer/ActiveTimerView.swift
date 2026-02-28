@@ -7,6 +7,7 @@ struct ActiveTimerView: View {
     let cycle: TimeCycle
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @State private var viewModel: ActiveTimerViewModel?
 
     var body: some View {
@@ -18,6 +19,17 @@ struct ActiveTimerView: View {
             }
         }
         .onAppear { setupViewModel() }
+        .onChange(of: scenePhase) { _, newPhase in
+            guard let vm = viewModel else { return }
+            switch newPhase {
+            case .background:
+                vm.appDidEnterBackground()
+            case .active:
+                vm.appWillEnterForeground()
+            default:
+                break
+            }
+        }
     }
 
     /// 计时器主内容

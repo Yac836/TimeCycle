@@ -32,6 +32,14 @@ struct TimeCycleApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onAppear {
+                    // 启动时请求通知权限并注册通知分类
+                    let notificationService = NotificationService()
+                    notificationService.registerCategories()
+                    Task {
+                        _ = await notificationService.requestPermission()
+                    }
+                }
         }
         .modelContainer(modelContainer)
     }
